@@ -1,0 +1,60 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Medical Transcript Classifier",
+    "version": "1.0.0"
+  },
+  "paths": {
+    "/classify": {
+      "post": {
+        "summary": "Classify medical transcript using locked L0",
+        "operationId": "classifyTranscript",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "locked_l0": {
+                    "type": "string",
+                    "example": "Pulmonology"
+                  },
+                  "transcript": {
+                    "type": "string",
+                    "example": "like to welcome everyone to this talk about anesthesia for bronchoscopy..."
+                  }
+                },
+                "required": ["locked_l0", "transcript"]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Classification results",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "results": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "path": {"type": "string"},
+                          "score": {"type": "integer"}
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
