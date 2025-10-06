@@ -3,7 +3,12 @@
   "info": {
     "title": "Medical Transcript Classifier",
     "version": "1.0.0"
-  },
+  }, 
+  "servers": [
+    {
+      "url": "https://transcript-classifier.onrender.com"
+    }
+  ],
   "paths": {
     "/classify": {
       "post": {
